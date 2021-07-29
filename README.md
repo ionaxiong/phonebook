@@ -1,2 +1,2 @@
 # phonebook
-### Link to Heroku (https://phonebook-mingxiong.herokuapp.com "Phonebook Application")
+### [Link to Heroku](https://phonebook-mingxiong.herokuapp.com/ "Phonebook Application")
