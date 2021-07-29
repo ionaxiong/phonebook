@@ -58,9 +58,13 @@ app.post("/api/persons", (request, response) => {
         number: body.number,
     }
 
-    if (!body.name) {
+    if (!(body.name && body.number)) {
         return response.status(400).json({
-            error: 'name missing'
+            error: 'The name or number is missing'
+        })
+    } else if (persons.find(person => person.name === body.name)) {
+        return response.status(400).json({
+            error: 'The name already exists in the phonebook'
         })
     }
 
