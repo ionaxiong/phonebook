@@ -90,6 +90,15 @@ app.use(
 //     response.status(204).end();
 // })
 
+app.get("/info", (request, response, next) => {
+  const date = new Date();
+  Person.count({}, (err, count) => {
+    console.log("Number of users:", count);
+    response.send(`Phonebook has info for ${count} people <br/> ${date}`);
+  });
+
+});
+
 app.get("/api/persons", (request, response, next) => {
   Person.find({})
     .then((person) => {
@@ -119,12 +128,11 @@ app.post("/api/persons", (request, response, next) => {
     number: body.number,
   });
 
-
   if (!(body.name && body.number)) {
     return response
       .status(400)
       .json({ error: "The name or the number is missing!" });
-  } 
+  }
 
   person
     .save()
