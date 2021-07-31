@@ -93,6 +93,26 @@ app.use(
 app.get("/api/persons", (request, response) => {
   Person.find({}).then((person) => {
     response.json(person);
+    console.log(person);
+  });
+});
+
+app.post("/api/persons", (request, response) => {
+  const body = request.body;
+
+  if (!(body.name && body.number)) {
+    return response
+      .status(400)
+      .json({ error: "The name or the number is missing!" });
+  }
+
+  const person = new Person({
+    name: body.name,
+    number: body.number,
+  });
+
+  person.save().then((newPerson) => {
+    response.json(newPerson);
   });
 });
 
