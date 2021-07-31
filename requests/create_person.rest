@@ -2,6 +2,6 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "Rhiana Bain",
+    "name": "Harry Potter",
     "number": "12-23-486848"
 }
